@@ -1,45 +1,100 @@
-  # SOC Phishing Email Investigation
+# SOC Phishing Email Investigation – Domain Impersonation Case
 
 ## Incident Summary
-A phishing email was identified targeting a user with the objective of credential theft through a fake login page.
+A phishing email was identified targeting a user through domain impersonation and MX record manipulation. The objective of the attack was suspected credential harvesting via a fake authentication flow.
 
 ## Environment
-Platform: :contentReference[oaicite:0]{index=0}  
-Analysis Type: Email phishing investigation (SOC alert review)
+Platform: LetsDefend SOC lab  
+Alert Type: Phishing / Domain impersonation (MX record abuse detection)  
+Severity: Medium  
 
-## Email Details
-- Sender: suspicious-email@domain.com  
-- Subject: Urgent Account Verification Required  
-- Type: Credential phishing attempt  
-- Technique: Social engineering + fake authentication page  
+---
+
+## Incident Details
+- Event ID: 304  
+- Rule: SOC326 – Impersonating Domain MX Record Change Detected  
+- Sender: no-reply@cti-report.io  
+- Recipient: soc@letsdefend.io  
+- Domain: letsdefwnd[.]io  
+- MX Record: mail.mailerhost[.]net  
+- Device Action: Allowed  
+
+---
 
 ## Analysis
-The email was analyzed and found to contain multiple phishing indicators:
+The investigation revealed multiple indicators consistent with a phishing infrastructure setup:
 
-- The sender domain is not associated with any trusted organization  
-- The message uses urgency-based language to pressure the user  
-- The email contains a link redirecting to a fake login page  
-- The domain and URL structure are inconsistent with legitimate services  
+- The domain `letsdefwnd[.]io` closely resembles a legitimate domain, indicating **typosquatting**
+- MX record configuration points to an external mail server (`mail.mailerhost[.]net`)
+- This suggests potential redirection or control of email routing for malicious purposes
+- Email content and structure indicate **social engineering tactics**
+- The domain shows characteristics of newly observed or low-reputation infrastructure
 
-These characteristics match known phishing attack patterns used for credential harvesting.
+No blocking action was triggered at the time of detection, but the activity was flagged as suspicious by the SOC rule engine.
+
+---
+
+## Threat Intelligence Analysis
+The domain and related infrastructure were analyzed using threat intelligence sources:
+
+- VirusTotal  
+- AbuseIPDB  
+- Cisco Talos  
+
+Findings:
+- No strong malicious detections reported at time of analysis
+- Low or limited reputation across platforms
+- MX record associated with external mail infrastructure
+- No verified legitimate business association identified
+
+This suggests either:
+- A newly created domain  
+- Or a low-profile phishing infrastructure not yet widely reported  
+
+---
 
 ## Indicators of Compromise (IOCs)
-- Malicious sender email address  
-- Phishing URL (fake login page)  
-- Social engineering keywords (urgent, verify, account locked)  
-- Domain mismatch between sender and expected organization  
 
-## Findings
-- Email confirmed as malicious  
-- Objective is credential theft  
-- No legitimate business communication detected  
+### Network IOCs
+- Domain: letsdefwnd[.]io  
+- MX Record: mail.mailerhost[.]net  
 
-## Conclusion
-This incident is a confirmed phishing attempt designed to steal user credentials using social engineering and a fraudulent login page.
+### Email IOCs
+- Sender: no-reply@cti-report.io  
+- Recipient: soc@letsdefend.io  
+
+### Detection IOCs
+- Event ID: 304  
+- Alert Type: Domain impersonation via MX record change  
+
+---
+
+## Impact Assessment
+- No confirmed compromise observed
+- No evidence of successful exploitation in logs
+- However, infrastructure indicates possible preparation for phishing activity
+
+If exploited, this type of configuration could enable:
+- Credential harvesting
+- Email spoofing
+- Redirection of email traffic
+
+---
 
 ## Recommendations
-- Block sender domain at email gateway  
-- Report email to SOC/security team  
-- Educate users on phishing awareness  
-- Implement SPF, DKIM, and DMARC email authentication  
-- Monitor similar email patterns in logs  
+
+- Monitor DNS and MX record changes for suspicious modifications  
+- Block impersonating or lookalike domains at email gateway level  
+- Implement email authentication controls:
+  - SPF  
+  - DKIM  
+  - DMARC  
+- Use threat intelligence feeds for proactive detection  
+- Continuously monitor for similar domain patterns and anomalies  
+
+---
+
+## Conclusion
+This investigation identified a domain impersonation attempt involving MX record manipulation. Although no active compromise was confirmed, the indicators strongly suggest potential phishing infrastructure setup.
+
+The case demonstrates SOC analyst responsibilities including alert triage, domain investigation, threat intelligence correlation, and IOC extraction.
