@@ -14,9 +14,8 @@ This repository contains SOC-style incident investigations and security analysis
 ---
 
 ## 🧪 Tools & Platforms
-- :contentReference[oaicite:0]{index=0}  
 - Log analysis techniques  
-- Threat intelligence tools (VirusTotal, etc.)
+- Threat intelligence tools (e.g., VirusTotal)
 
 ---
 
