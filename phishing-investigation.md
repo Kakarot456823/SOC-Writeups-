@@ -32,7 +32,7 @@ The investigation revealed multiple indicators consistent with a phishing infras
 - The domain shows low reputation and characteristics of newly observed infrastructure  
 
 No blocking action was triggered at the time of detection, but the activity was flagged as suspicious by the SOC rule engine.
-
+![Domain Analysis](screenshots/phishing/phishing-2.png)
 ---
 
 ## Threat Intelligence Analysis
@@ -41,12 +41,14 @@ The domain and related infrastructure were analyzed using threat intelligence so
 - VirusTotal  
 - AbuseIPDB  
 - Cisco Talos  
+![Threat Intelligence](screenshots/phishing/phishing-3.png)
 
 Findings indicate:
 - No confirmed malicious detections at the time of analysis  
 - Low or limited reputation across multiple sources  
 - MX record associated with external mail infrastructure  
 - No verified legitimate business association identified  
+![IOCs](screenshots/phishing/phishing-4.png)
 
 This suggests the domain may be either newly registered or part of low-visibility phishing infrastructure not yet widely reported.
 
