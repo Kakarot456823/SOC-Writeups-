@@ -23,7 +23,7 @@ A VPN login was detected from an unauthorized country involving user **monica@le
 - Access targeted internal system 33.33.33.33  
 - Login occurred at unusual time (02:03–02:04 AM)  
 - Behavior indicates suspicious remote access attempt  
-![Log Analysis](ua-2.png)
+![Log Analysis](screenshots/unauthorized-access/ua-2.png)
 
 ---
 
@@ -32,7 +32,7 @@ A VPN login was detected from an unauthorized country involving user **monica@le
 - Reputation checked for malicious activity  
 - Results may vary across threat intelligence sources  
 - Geographic anomaly is a key indicator of risk  
-![Threat Intelligence](ua-3.png)
+![Threat Intelligence](screenshots/unauthorized-access/ua-3.png)
 
 ---
 
@@ -49,7 +49,7 @@ A VPN login was detected from an unauthorized country involving user **monica@le
 - Unusual login time  
 - External remote access attempt  
 
-![IOC Evidence](ua-4.png)
+![IOC Evidence](screenshots/unauthorized-access/ua-4.png)
 
 ---
 
