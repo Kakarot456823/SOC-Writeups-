@@ -18,7 +18,7 @@ Severity: Medium
 - Domain: letsdefwnd[.]io  
 - MX Record: mail.mailerhost[.]net  
 - Device Action: Allowed  
-phishing-1.png
+![Figure 1: Alert details showing phishing detection](phishing-1.png)
 ---
 
 ## Analysis
