@@ -13,7 +13,8 @@ A VPN login was detected from an unauthorized country involving user **monica@le
 - Destination Host: Monica  
 - Time: Feb 13, 2024 – 02:04 AM  
 
-![Incident Details](screenshots/ua/ua-1.png)
+![Incident Details](screenshots/unauthorized-access/ua-1.png)
+
 ---
 
 ## 🔍 Log Analysis
