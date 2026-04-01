@@ -1,5 +1,3 @@
-.
-
 🛡️ SOC Malware Investigation Report
 Lumma Stealer – ClickFix Phishing Campaign (DLL Side-Loading)
 _______________________________________________________________________________________________________________________
