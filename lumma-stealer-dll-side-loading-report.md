@@ -20,7 +20,7 @@ Attack Type: Phishing / Malware Delivery
 Threat: Info-Stealer (Lumma Stealer)
 Severity: Critical
 
-📸![Monitoring Alert](screenshots/monitoring-alert.png)
+📸 ![Monitoring Alert](screenshots/monitoring-alert.png)
 
 📧 3. Initial Access (Email Analysis)
 
@@ -32,7 +32,7 @@ Fake Windows update theme
 Delivered successfully
 Contains malicious URL
 
-📸![Email Security Evidence](screenshots/email-security.png.png)
+📸 ![Email Security Evidence](screenshots/email-security.png.png)
 ![Email Details](screenshots/email-security2.png)
 
 
