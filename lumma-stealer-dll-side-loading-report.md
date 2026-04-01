@@ -76,6 +76,9 @@ Hybrid Analysis: Malicious verdict
 Detection: Trojan_HTML_FakeCaptcha
 Domain reputation: Malicious / phishing infrastructure
 VirusTotal: Multiple detections confirmed
+
+
+
 🚩 Indicators of Compromise (IOCs)
 🌐 Network Indicators
 Domain: windows-update.site
@@ -89,6 +92,9 @@ High risk of credential theft
 Potential Lumma Stealer infection
 Browser data and system data exfiltration risk
 Multi-stage infection chain initiated
+
+
+
 🛡️ Recommendations
 Email Security
 Block sender and domain at gateway level
@@ -106,6 +112,11 @@ User Awareness
 Train users to identify fake update prompts
 Avoid interacting with unsolicited system upgrade pages
 Encourage reporting of suspicious emails
+
+
+
+
+
 📌 Conclusion
 
 This investigation confirms a phishing campaign leveraging a fake Windows Update site to deliver a malicious payload associated with Lumma Stealer.
