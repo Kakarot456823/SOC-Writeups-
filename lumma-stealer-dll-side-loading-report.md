@@ -1,107 +1,111 @@
-🛡️ SOC Incident Report – Phishing Campaign (Windows Update Impersonation)
-📌 1. Incident Overview
+🛡️ SOC Malware Investigation – Lumma Stealer (DLL Side-Loading via ClickFix Phishing)
+🧪 Environment
 
-Incident Type: Phishing + Malware Delivery
+Platform: LetsDefend SOC simulation lab
+Attack Type: Phishing with malicious link delivery
+Threat Category: Credential Stealer / DLL Side-Loading Malware
 Severity: Critical
-Status: True Positive
 
-A phishing email impersonating a Windows Update notification was delivered to the user. The email contained a malicious link redirecting to a fake Windows Update domain (windows-update.site). The attack chain led to a malicious HTML page and suspicious endpoint execution activity.
+🧾 Incident Summary
 
-📧 2. Email Analysis (Initial Access)
-🔍 Findings:
-Sender: update@windows-update.site
-Subject: “Upgrade your system to Windows 11 Pro for FREE”
-Status: Delivered (Allowed by email security)
-Contains malicious URL leading to phishing landing page
-📸 Screenshot 1 (Email Security Tool)
-Full email view showing sender, subject, and device action (Allowed)
-🌐 3. Phishing Domain Analysis
-🔍 Findings:
-Domain: windows-update.site
-Impersonates Microsoft Windows Update service
-Used for social engineering and redirect to malicious content
-📸 Screenshot 2 (Domain / Email URL Detection Tool)
-Highlight malicious domain and reputation
-🧪 4. Hybrid Analysis (Malicious Landing Page)
-🔍 Findings:
-File: urlref_httpswww.windows-update.site
-Type: HTML phishing page
+A phishing campaign was identified delivering a malicious Windows Update–themed link (windows-update.site).
+The user was redirected to a fake update page that hosted malicious content associated with Lumma Stealer.
+
+The attack leveraged social engineering to trick the user into interacting with a fake update prompt, leading to potential malware execution and data exfiltration.
+
+Threat intelligence analysis confirmed the domain and payload as malicious, and the incident was classified as a true positive data leakage attempt.
+
+🖥️ Incident Details
+
+Event ID: 316
+Detection Rule: SOC338 – Lumma Stealer – DLL Side-Loading via ClickFix Phishing
+Malicious Domain: windows-update.site
+File Hash (MD5): b4d09773c732ae0da41449cb6d0ac0fa9903c0e4b7ea2efdf06321f2a569e2db
+Submission Type: HTML phishing page
+Timestamp: Mar 13, 2025
+
+🌐 Alert Overview
+
+The SOC monitoring system detected suspicious activity linked to a phishing email redirecting users to a fake Windows Update site.
+
+Key observations:
+
+External malicious domain impersonating Microsoft
+HTML-based phishing page flagged by threat intelligence tools
+Low AV detection rate but confirmed malicious behavior
+User interaction required for execution chain
+📧 Email / Initial Access Analysis
+
+The phishing email used social engineering techniques to impersonate a legitimate Windows update notification.
+
+Key indicators:
+
+Sender: external/untrusted domain
+Subject: Windows update / system upgrade lure
+Contains malicious URL redirect
+Delivered successfully to user mailbox
+
+These indicators strongly suggest a phishing-based initial access attempt.
+
+🧠 Payload & Threat Analysis
+
+File type: HTML phishing page
 Detection: Trojan_HTML_FakeCaptcha
-Multiple AV engines flagged as malicious
-📸 Screenshot 3 (Hybrid Analysis Overview)
-Verdict: Malicious
-Detection name visible
-Hash visible
-💻 5. Endpoint Security Analysis
-🔍 Findings:
-Process: AM_Engine.exe
-Process ID: 4812
-Parent: wuauclt.exe
-Path: C:\Windows\SoftwareDistribution\Download\Install\
-User: NT AUTHORITY\SYSTEM
-⚠️ Observation:
+Behavior: Credential harvesting / fake update prompt
 
-Execution chain suggests abuse of Windows Update mechanism to deploy a potentially malicious payload under SYSTEM privileges.
+The malicious page mimics a Windows update screen to trick users into executing or downloading additional payloads.
 
-📸 Screenshot 4 (Endpoint Process View)
-Full process tree and execution details
-🧪 6. Threat Intelligence Validation
-🔍 Findings:
-Hybrid Analysis confirms malicious HTML behavior
-Domain and payload confirmed as phishing infrastructure
-Supports multi-stage attack lifecycle
-📸 Screenshot 5 (VirusTotal / AbuseIPDB / Talos)
-Domain or hash reputation results
-🧠 7. MITRE ATT&CK Mapping
-T1566.002 – Phishing: Spearphishing Link
-T1204.001 – User Execution (Clicking malicious link)
-T1189 – Drive-by Compromise (malicious webpage)
-T1204.002 – User Execution (Malicious file execution)
-T1036 – Masquerading (Windows Update impersonation)
-T1059 – Command and Scripting Interpreter
-📂 8. Artifacts Collected (IOCs)
-Email Sender: update@windows-update.site
+Threat intelligence confirmed:
+
+Known phishing infrastructure
+Association with credential theft campaigns (Lumma Stealer)
+Multi-stage attack chain using DLL side-loading techniques
+💻 Endpoint Behavior Analysis
+
+Suspicious process execution observed:
+
+Process Path: Windows system-related directories
+Execution context: SYSTEM-level privileges observed
+Parent process chain consistent with Windows update components
+Behavior indicates potential DLL side-loading activity
+
+No direct user-legitimate process justification identified.
+
+🧠 Threat Intelligence Validation
+Hybrid Analysis verdict: Malicious
+Detection label: Trojan_HTML_FakeCaptcha
+VirusTotal / reputation tools: flagged suspicious
+Domain classified as phishing infrastructure
+🚩 Indicators of Compromise (IOCs)
+Email / Network Indicators
 Domain: windows-update.site
-MD5 Hash: b4d09773c732ae0da41449cb6d0ac0fa9903c0e4b7ea2efdf06321f2a569e2db
-📸 9. Case Closure Evidence
-📸 Screenshot 6
-Final investigation screen or submission confirmation (if available)
-🧾 10. Final Analyst Summary
+URL: Fake Windows Update landing page
+Sender: External phishing source
+File / Hash Indicators
+MD5: b4d09773c732ae0da41449cb6d0ac0fa9903c0e4b7ea2efdf06321f2a569e2db
+Type: HTML phishing payload
+📊 Impact Assessment
+Potential credential theft (high confidence)
+Malware delivery chain initiated
+Risk of Lumma Stealer infection
+Possible data exfiltration from browser and system storage
+🛡️ Recommendations
+Block malicious domain at DNS and proxy level
+Add hash and domain to threat intelligence feeds
+Strengthen email filtering (SPF, DKIM, DMARC enforcement)
+Deploy browser protection against fake update pages
+Monitor endpoint execution in system directories
+Educate users on fake update phishing campaigns
+Implement EDR behavioral detection for DLL side-loading patterns
+📌 Conclusion
 
-The investigation confirmed a phishing campaign leveraging a fake Windows Update domain to deliver a malicious HTML page. The attack successfully reached the user and triggered suspicious execution activity on the endpoint.
+This investigation confirmed a phishing-based malware delivery attempt using a fake Windows Update website associated with Lumma Stealer activity.
 
-No evidence of lateral movement or persistence was identified. The incident is classified as a confirmed phishing attack with malicious payload delivery attempt.
+The attack demonstrates a multi-stage infection chain involving:
 
-📌 11. Recommendations
-🔐 Email Security Improvements
-Block sender domain windows-update.site
-Implement advanced phishing detection rules (URL rewriting + sandboxing)
-Enable DMARC, DKIM, and SPF enforcement
-🌐 Web Filtering & Domain Protection
-Add malicious domain to web proxy blacklist
-Block newly registered suspicious domains (NRD filtering)
-Monitor for lookalike Windows/Microsoft domains
-💻 Endpoint Security Enhancements
+Social engineering (phishing email)
+Malicious HTML landing page
+Potential DLL side-loading execution
+Data exfiltration risk
 
-Monitor execution from:
-
-C:\Windows\SoftwareDistribution\
-Enable behavioral detection for process anomalies
-Restrict execution of unknown binaries in system directories
-🧠 User Awareness Training
-Train users to identify fake Windows update emails
-Avoid clicking unsolicited “free upgrade” links
-Report suspicious emails immediately
-🧪 Threat Intelligence Integration
-Add IOCs to SIEM / threat feeds:
-Domain
-Email sender
-Hash
-Monitor for reappearance of related infrastructure
-✅ FINAL RESULT
-
-✔ Phishing attack confirmed
-✔ Malware delivery attempt identified
-✔ Endpoint execution observed
-✔ Threat intelligence validated
-✔ Incident contained and closed
+The incident was correctly classified as a critical true positive, demonstrating effective SOC detection, triage, and threat intelligence validation.
