@@ -36,7 +36,7 @@ Contains malicious URL
 ![Email Details](screenshots/umma-stealer-dll-side-loading/email-security2.png)
 
 
-_____________________________________________________________________________________-
+
 🌐 4. Web / Domain Analysis
 
 The user was redirected to a fake update domain.
