@@ -47,7 +47,7 @@ Newly registered / suspicious domain
 Marked malicious by threat intel tools
 
 ![Log Management - URL Evidence](screenshots/umma-stealer-dll-side-loading/log-management.png)
-![Log Evidence](screenshots/umma-stealer-dll-side-loading/log.png)
+
 ______________________________________________________________________________________________________
 🧠 5. Threat Intelligence Analysis
 
@@ -78,7 +78,7 @@ Possible DLL side-loading behavior
 SYSTEM-level execution context
 
 ![Endpoint Security](screenshots/umma-stealer-dll-side-loading/endpoint-security.png)
-![Endpoint Process Details](screenshots/umma-stealer-dll-side-loading/endpoint.png)
+
 
 Suspicious executable launched via Windows update service chain
 File executed from SoftwareDistribution download directory
