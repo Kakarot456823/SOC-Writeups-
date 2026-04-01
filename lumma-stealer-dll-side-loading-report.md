@@ -4,10 +4,12 @@ ________________________________________________________________________________
 
 📌 1. Executive Summary
 
-A phishing campaign was identified delivering a fake Windows Update link (windows-update.site).
-User interaction led to a malicious landing page associated with Lumma Stealer activity.
+A phishing campaign was identified delivering a fake Windows Update link (windows-update.site). User interaction led to a malicious landing page associated with Lumma Stealer activity.
 
 The attack demonstrates a multi-stage infection chain involving phishing, social engineering, and potential DLL side-loading behavior.
+
+Attack Chain:
+Phishing Email → Malicious URL → Fake Update Page → Payload Execution → Potential Data Exfiltration
 
 Final Classification: 🔴 True Positive (Critical)
 ___________________________________________________________________________________________________________________________________________________
@@ -115,11 +117,11 @@ Block malicious sender/domain
 Enable DMARC, SPF, DKIM enforcement
 Improve phishing URL filtering
 Web Security
-Block domain at DNS + proxy level
+Block domain at DNS and proxy level
 Monitor newly registered domains
 Use URL sandboxing
 Endpoint Security
-Monitor Windows system directory execution
+Monitor execution in system directories
 Detect DLL side-loading behavior
 Enable EDR behavioral alerts
 User Awareness
