@@ -20,7 +20,7 @@ Attack Type: Phishing / Malware Delivery
 Threat: Info-Stealer (Lumma Stealer)
 Severity: Critical
 
-📸 Screenshot 1 – Alert Overview / Case Dashboard
+📸![Monitoring Alert](screenshots/monitoring-alert.png)
 
 📧 3. Initial Access (Email Analysis)
 
@@ -32,7 +32,8 @@ Fake Windows update theme
 Delivered successfully
 Contains malicious URL
 
-📸 Screenshot 2 – Email Evidence (Sender, Subject, URL, Delivery Status)
+📸![Email Security Evidence](screenshots/email-security.png.png)
+![Email Details](screenshots/email-security2.png)
 
 
 _____________________________________________________________________________________-
@@ -45,7 +46,8 @@ Domain impersonates Microsoft services
 Newly registered / suspicious domain
 Marked malicious by threat intel tools
 
-📸 Screenshot 3 – Domain Reputation / URL Analysis
+📸![Log Management - URL Evidence](screenshots/log-management.png)
+![Log Evidence](screenshots/log.png)
 ______________________________________________________________________________________________________
 🧠 5. Threat Intelligence Analysis
 
@@ -56,7 +58,14 @@ Trojan_HTML_FakeCaptcha detection
 Low AV detection but high confidence malicious
 Associated with Lumma Stealer campaigns
 
-📸 Screenshot 4 – Hybrid Analysis / VirusTotal Results
+📸 ![VirusTotal Results](screenshots/virus-total.png.png)
+
+Malicious HTML page identified as fake Windows update portal
+Classified as Trojan_HTML_FakeCaptcha by multiple engines
+Confirms phishing infrastructure used in initial access stage
+
+
+
 ____________________________________________________________________________________________________________
 💻 6. Endpoint Behavior Analysis
 
@@ -68,15 +77,21 @@ Process chain resembles Windows Update activity
 Possible DLL side-loading behavior
 SYSTEM-level execution context
 
-📸 Screenshot 5 – Endpoint Process Tree / Command Line / Image Path
-__________________________________________________________________________________________________________________
+![Endpoint Security](screenshots/endpoint-security.png)
+![Endpoint Process Details](screenshots/endpoint.png)
+
+Suspicious executable launched via Windows update service chain
+File executed from SoftwareDistribution download directory
+Indicates potential malicious payload execution path
+_______________________________________________________________________________________________________
 🚩 7. Indicators of Compromise (IOCs)
 🌐 Network
 Domain: windows-update.site
 Phishing URL used for redirection
 📁 File
 MD5: b4d09773c732ae0da41449cb6d0ac0fa9903c0e4b7ea2efdf06321f2a569e2db
-____________________________________________________________________
+📸![Threat Intelligence](screenshots/threat-intel.png)
+_____________________________________________
 
 
 🧠 8. MITRE ATT&CK Mapping
