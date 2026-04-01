@@ -1,131 +1,116 @@
-🛡️ SOC Malware Investigation – Lumma Stealer (ClickFix Phishing Campaign)
-🧪 Environment
+.
 
-Platform: LetsDefend SOC Simulation Lab
-Attack Type: Phishing (Malicious Link Delivery)
-Threat Category: Info-Stealer / DLL Side-Loading
+🛡️ SOC Malware Investigation Report
+Lumma Stealer – ClickFix Phishing Campaign (DLL Side-Loading)
+📌 1. Executive Summary
+
+A phishing campaign was identified delivering a fake Windows Update link (windows-update.site).
+User interaction led to a malicious landing page associated with Lumma Stealer activity.
+
+The attack demonstrates a multi-stage infection chain involving phishing, social engineering, and potential DLL side-loading behavior.
+
+Final Classification: 🔴 True Positive (Critical)
+
+🧪 2. Environment
+Platform: LetsDefend SOC Lab
+Case ID: SOC338
+Attack Type: Phishing / Malware Delivery
+Threat: Info-Stealer (Lumma Stealer)
 Severity: Critical
 
-🧾 Incident Summary
+📸 Screenshot 1 – Alert Overview / Case Dashboard
 
-A phishing campaign was detected delivering a malicious link impersonating a Windows Update service (windows-update.site). The user was redirected to a fake update page designed to trigger malicious activity associated with Lumma Stealer.
+📧 3. Initial Access (Email Analysis)
 
-The attack used social engineering to convince the user to interact with a fake system update prompt, enabling a multi-stage infection chain potentially leading to credential theft and data exfiltration.
+A phishing email was delivered to the user containing a malicious link impersonating Windows Update.
 
-Threat intelligence confirmed the domain and payload as malicious. The incident was classified as a true positive high-severity phishing attack.
+Key Observations:
+External sender domain
+Fake Windows update theme
+Delivered successfully
+Contains malicious URL
 
-🖥️ Incident Details
+📸 Screenshot 2 – Email Evidence (Sender, Subject, URL, Delivery Status)
 
-Event ID: 316
-Rule Name: SOC338 – Lumma Stealer – DLL Side-Loading via ClickFix Phishing
-Detection Source: Email / Web Gateway / Threat Intelligence
-Malicious Domain: windows-update.site
-File Hash (MD5): b4d09773c732ae0da41449cb6d0ac0fa9903c0e4b7ea2efdf06321f2a569e2db
-File Type: HTML phishing page
-Timestamp: Mar 13, 2025
+🌐 4. Web / Domain Analysis
 
-🌐 Alert Overview
+The user was redirected to a fake update domain.
 
-The security monitoring system flagged a suspicious phishing attempt involving a fake Windows Update domain.
+Indicators:
+Domain impersonates Microsoft services
+Newly registered / suspicious domain
+Marked malicious by threat intel tools
 
-Key observations:
+📸 Screenshot 3 – Domain Reputation / URL Analysis
 
-External domain impersonating Microsoft services
-HTML-based phishing landing page
-Low AV detection but high behavioral risk
-Requires user interaction for execution chain
-📧 Initial Access Analysis
+🧠 5. Threat Intelligence Analysis
 
-The attack began with a phishing email containing a malicious URL.
+Hybrid analysis confirmed malicious behavior linked to phishing infrastructure.
 
-Key indicators:
+Findings:
+Trojan_HTML_FakeCaptcha detection
+Low AV detection but high confidence malicious
+Associated with Lumma Stealer campaigns
 
-External/untrusted sender domain
-Windows update-themed social engineering lure
-Delivered successfully to user mailbox
-Designed to prompt user interaction
+📸 Screenshot 4 – Hybrid Analysis / VirusTotal Results
 
-These indicators confirm a phishing-based initial access vector.
+💻 6. Endpoint Behavior Analysis
 
-🧠 Payload Analysis
+Suspicious system activity observed after interaction.
 
-File Type: HTML (Phishing Page)
-Detection Label: Trojan_HTML_FakeCaptcha
-Behavior: Fake update prompt / potential credential harvesting
+Key Indicators:
+Execution under Windows system directories
+Process chain resembles Windows Update activity
+Possible DLL side-loading behavior
+SYSTEM-level execution context
 
-The page mimics a legitimate Windows Update interface to manipulate user behavior and initiate malware delivery.
+📸 Screenshot 5 – Endpoint Process Tree / Command Line / Image Path
 
-Threat intelligence confirms:
-
-Malicious phishing infrastructure
-Association with Lumma Stealer campaigns
-Multi-stage infection chain using ClickFix techniques
-💻 Endpoint Behavior Analysis
-
-Suspicious activity was observed following user interaction:
-
-Execution within Windows system-related directories
-Process chain consistent with Windows Update impersonation
-Potential DLL side-loading behavior detected
-SYSTEM-level execution context observed
-
-No legitimate justification for execution was identified.
-
-🧠 Threat Intelligence Validation
-Hybrid Analysis: Malicious verdict
-Detection: Trojan_HTML_FakeCaptcha
-Domain reputation: Malicious / phishing infrastructure
-VirusTotal: Multiple detections confirmed
-
-
-
-🚩 Indicators of Compromise (IOCs)
-🌐 Network Indicators
+🚩 7. Indicators of Compromise (IOCs)
+🌐 Network
 Domain: windows-update.site
-URL: Fake Windows Update landing page
-Sender: External phishing source
-📁 File Indicators
+Phishing URL used for redirection
+📁 File
 MD5: b4d09773c732ae0da41449cb6d0ac0fa9903c0e4b7ea2efdf06321f2a569e2db
-Type: HTML phishing payload
-📊 Impact Assessment
-High risk of credential theft
+🧠 8. MITRE ATT&CK Mapping
+T1566.002 – Phishing (Link-based)
+T1204.001 – User Execution (Clicking link)
+T1189 – Drive-by Compromise
+T1036 – Masquerading (Windows Update impersonation)
+T1059 – Command Execution
+T1105 – Remote File Transfer (possible payload stage)
+📊 9. Impact Assessment
+Credential theft risk
+Browser data compromise
 Potential Lumma Stealer infection
-Browser data and system data exfiltration risk
-Multi-stage infection chain initiated
-
-
-
-🛡️ Recommendations
-Email Security
-Block sender and domain at gateway level
-Enforce SPF, DKIM, and DMARC policies
-Improve phishing URL detection and sandboxing
-Web Security
-Block malicious domain across DNS and proxy
-Monitor for newly registered suspicious domains
-Implement web filtering for fake update pages
-Endpoint Security
-Monitor execution in system directories
-Detect abnormal child processes from Windows update components
-Enable behavioral detection for DLL side-loading activity
-User Awareness
-Train users to identify fake update prompts
-Avoid interacting with unsolicited system upgrade pages
-Encourage reporting of suspicious emails
-
-
-
-
-
-📌 Conclusion
-
-This investigation confirms a phishing campaign leveraging a fake Windows Update site to deliver a malicious payload associated with Lumma Stealer.
-
-The attack demonstrates a multi-stage infection chain involving:
-
-Social engineering (phishing email)
-Fake update landing page
-Potential DLL side-loading execution
 Data exfiltration risk
+Multi-stage infection chain
+🛡️ 10. Recommendations
+Email Security
+Block malicious sender/domain
+Enable DMARC, SPF, DKIM enforcement
+Improve phishing URL filtering
+Web Security
+Block domain at DNS + proxy level
+Monitor newly registered domains
+Use URL sandboxing
+Endpoint Security
+Monitor Windows system directory execution
+Detect DLL side-loading behavior
+Enable EDR behavioral alerts
+User Awareness
+Train users on fake update scams
+Encourage phishing reporting
+Avoid clicking unsolicited links
+📌 11. Conclusion
 
-The incident was correctly classified as a critical true positive, highlighting effective SOC detection and threat intelligence validation.
+The investigation confirmed a phishing campaign targeting users through a fake Windows Update site.
+
+The attack chain demonstrates:
+
+Social engineering entry point
+Malicious web redirection
+Possible DLL side-loading execution
+High-risk info-stealer activity (Lumma Stealer)
+
+Final Result: Critical True Positive – Incident contained and documented.
