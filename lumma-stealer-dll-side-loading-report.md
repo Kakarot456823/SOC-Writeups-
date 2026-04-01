@@ -89,7 +89,7 @@ ________________________________________________________________________________
 Domain: windows-update.site
 Phishing URL used for redirection
 📁 File
-:SHA256  4d09773c732ae0da41449cb6d0ac0fa9903c0e4b7ea2efdf06321f2a569e2db
+:SHA256  b4d09773c732ae0da41449cb6d0ac0fa9903c0e4b7ea2efdf06321f2a569e2db
 ![Threat Intelligence](screenshots/umma-stealer-dll-side-loading/threat-intel.png)
 _____________________________________________
 
