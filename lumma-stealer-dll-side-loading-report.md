@@ -2,6 +2,8 @@
 
 🛡️ SOC Malware Investigation Report
 Lumma Stealer – ClickFix Phishing Campaign (DLL Side-Loading)
+_______________________________________________________________________________________________________________________
+
 📌 1. Executive Summary
 
 A phishing campaign was identified delivering a fake Windows Update link (windows-update.site).
@@ -10,7 +12,7 @@ User interaction led to a malicious landing page associated with Lumma Stealer a
 The attack demonstrates a multi-stage infection chain involving phishing, social engineering, and potential DLL side-loading behavior.
 
 Final Classification: 🔴 True Positive (Critical)
-
+___________________________________________________________________________________________________________________________________________________
 🧪 2. Environment
 Platform: LetsDefend SOC Lab
 Case ID: SOC338
@@ -32,6 +34,8 @@ Contains malicious URL
 
 📸 Screenshot 2 – Email Evidence (Sender, Subject, URL, Delivery Status)
 
+
+_____________________________________________________________________________________-
 🌐 4. Web / Domain Analysis
 
 The user was redirected to a fake update domain.
@@ -42,7 +46,7 @@ Newly registered / suspicious domain
 Marked malicious by threat intel tools
 
 📸 Screenshot 3 – Domain Reputation / URL Analysis
-
+______________________________________________________________________________________________________
 🧠 5. Threat Intelligence Analysis
 
 Hybrid analysis confirmed malicious behavior linked to phishing infrastructure.
@@ -53,7 +57,7 @@ Low AV detection but high confidence malicious
 Associated with Lumma Stealer campaigns
 
 📸 Screenshot 4 – Hybrid Analysis / VirusTotal Results
-
+____________________________________________________________________________________________________________
 💻 6. Endpoint Behavior Analysis
 
 Suspicious system activity observed after interaction.
@@ -65,13 +69,16 @@ Possible DLL side-loading behavior
 SYSTEM-level execution context
 
 📸 Screenshot 5 – Endpoint Process Tree / Command Line / Image Path
-
+__________________________________________________________________________________________________________________
 🚩 7. Indicators of Compromise (IOCs)
 🌐 Network
 Domain: windows-update.site
 Phishing URL used for redirection
 📁 File
 MD5: b4d09773c732ae0da41449cb6d0ac0fa9903c0e4b7ea2efdf06321f2a569e2db
+____________________________________________________________________
+
+
 🧠 8. MITRE ATT&CK Mapping
 T1566.002 – Phishing (Link-based)
 T1204.001 – User Execution (Clicking link)
@@ -79,12 +86,16 @@ T1189 – Drive-by Compromise
 T1036 – Masquerading (Windows Update impersonation)
 T1059 – Command Execution
 T1105 – Remote File Transfer (possible payload stage)
+
+____________________________________________________________________
 📊 9. Impact Assessment
 Credential theft risk
 Browser data compromise
 Potential Lumma Stealer infection
 Data exfiltration risk
 Multi-stage infection chain
+
+____________________________________________________________________________
 🛡️ 10. Recommendations
 Email Security
 Block malicious sender/domain
@@ -102,6 +113,8 @@ User Awareness
 Train users on fake update scams
 Encourage phishing reporting
 Avoid clicking unsolicited links
+
+____________________________________________________________________________
 📌 11. Conclusion
 
 The investigation confirmed a phishing campaign targeting users through a fake Windows Update site.
