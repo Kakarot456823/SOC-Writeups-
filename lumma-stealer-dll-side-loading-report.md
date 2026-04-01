@@ -20,7 +20,7 @@ Attack Type: Phishing / Malware Delivery
 Threat: Info-Stealer (Lumma Stealer)
 Severity: Critical
 
- ![Monitoring Alert](screenshots/monitoring-alert.png)
+ ![Monitoring Alert](screenshots/umma-stealer-dll-side-loading/monitoring-alert.png)
 
 📧 3. Initial Access (Email Analysis)
 
@@ -32,8 +32,8 @@ Fake Windows update theme
 Delivered successfully
 Contains malicious URL
 
-![Email Security Evidence](screenshots/email-security.png.png)
-![Email Details](screenshots/email-security2.png)
+![Email Security Evidence](screenshots/umma-stealer-dll-side-loading/email-security.png.png)
+![Email Details](screenshots/umma-stealer-dll-side-loading/email-security2.png)
 
 
 _____________________________________________________________________________________-
@@ -46,8 +46,8 @@ Domain impersonates Microsoft services
 Newly registered / suspicious domain
 Marked malicious by threat intel tools
 
-![Log Management - URL Evidence](screenshots/log-management.png)
-![Log Evidence](screenshots/log.png)
+![Log Management - URL Evidence](screenshots/umma-stealer-dll-side-loading/log-management.png)
+![Log Evidence](screenshots/umma-stealer-dll-side-loading/log.png)
 ______________________________________________________________________________________________________
 🧠 5. Threat Intelligence Analysis
 
@@ -58,7 +58,7 @@ Trojan_HTML_FakeCaptcha detection
 Low AV detection but high confidence malicious
 Associated with Lumma Stealer campaigns
 
-![VirusTotal Results](screenshots/virus-total.png.png)
+![VirusTotal Results](screenshots/umma-stealer-dll-side-loading/virus-total.png.png)
 
 Malicious HTML page identified as fake Windows update portal
 Classified as Trojan_HTML_FakeCaptcha by multiple engines
@@ -77,8 +77,8 @@ Process chain resembles Windows Update activity
 Possible DLL side-loading behavior
 SYSTEM-level execution context
 
-![Endpoint Security](screenshots/endpoint-security.png)
-![Endpoint Process Details](screenshots/endpoint.png)
+![Endpoint Security](screenshots/umma-stealer-dll-side-loading/endpoint-security.png)
+![Endpoint Process Details](screenshots/umma-stealer-dll-side-loading/endpoint.png)
 
 Suspicious executable launched via Windows update service chain
 File executed from SoftwareDistribution download directory
@@ -90,7 +90,7 @@ Domain: windows-update.site
 Phishing URL used for redirection
 📁 File
 MD5: b4d09773c732ae0da41449cb6d0ac0fa9903c0e4b7ea2efdf06321f2a569e2db
-![Threat Intelligence](screenshots/threat-intel.png)
+![Threat Intelligence](screenshots/umma-stealer-dll-side-loading/threat-intel.png)
 _____________________________________________
 
 
